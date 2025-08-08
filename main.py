@@ -1,17 +1,28 @@
-def crearArchivo():
-    #crea el archivo y lo cierra automaticamente
-    with open("practica2.txt", "w") as archivo:
-        archivo.write("Actividad practica de la universidad")
+import time #para una impresion mas interesante en consola 
+from pathlib import Path
 
-def leerArchivo():
-    archivoCreado = open('practica2.txt')
-    contenido = archivoCreado.readlines() #da la opcion de agregar mas lineas
-    for linea in contenido: #lee cada linea del archivo
-        print("El archivo contiene: " + linea)
-    archivoCreado.close()
+# Crear ruta a escritorio
+desktop = Path("D:/OneDrive - Universidad Rafael Landivar/Escritorio")
+ruta = desktop / "1185324.txt"
 
-#llama a las funciones
-crearArchivo()
-lecturaArchivo = leerArchivo()
 
-print(lecturaArchivo)
+#Ingreso de datos
+print("---Bienvenido---\nIngrese los siguientes datos:\n")
+nombreUsuario = input("Nombre: ")
+carneUsuario = input("Carnet: ")
+carreraUsuario = input("Carrera: ")
+correoUsuario = input("Correo electronico: ")
+
+#Crear y escribir archivo
+with open(ruta, "w", encoding="utf-8") as archivo:
+    archivo.write("D A T O S  P E R S O N A L E S\n")
+    archivo.write("Nombre:  " + nombreUsuario + "\n")
+    archivo.write("Carnet: " + carneUsuario + "\n")
+    archivo.write("Carrera: " + carreraUsuario  + "\n")
+    archivo.write("Correo electronico: " + correoUsuario + "\n")
+
+    for punto in range(3):
+        print(".", end=" ", flush=True)
+        time.sleep(1)
+
+    print("\nArchivo creado exitosamente.")
